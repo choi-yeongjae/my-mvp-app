@@ -3,8 +3,11 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 import { Inter as FontSans } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 
 import { cn } from "@/lib/utils";
+
+import Layout from "@/layouts";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -22,8 +25,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body className={cn("flex flex-col min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
+          <Layout>{children}</Layout>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
