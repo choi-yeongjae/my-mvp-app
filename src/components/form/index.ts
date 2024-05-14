@@ -1,5 +1,4 @@
 export { default as CheckBoxField } from "./CheckBoxField";
-export { default as ContentEditorField } from "./ContentEditorField";
 export { default as InputField } from "./InputField";
 export { default as InputFileField } from "./InputFileField";
 export { default as RadioField } from "./RadioField";
