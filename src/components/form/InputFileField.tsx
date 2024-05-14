@@ -11,7 +11,6 @@ import type { ImageMimeType } from "@/types/mimeType";
 
 import { cn } from "@/lib/utils";
 import { heic2jpg } from "@/lib/image";
-import { useScopedI18n } from "@/locales/clients/client";
 
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -32,7 +31,6 @@ type InputFieldProps = {
   readOnly?: boolean;
 };
 export default function InputFileField(props: InputFieldProps) {
-  const t = useScopedI18n("components.form.inputFileField");
   const [tmpFile, setTmpFile] = useState<string | undefined>(props.defaultValue || undefined);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     multiple: false,
@@ -58,9 +56,9 @@ export default function InputFileField(props: InputFieldProps) {
             }
           });
         toast.promise(heicFileConvert, {
-          loading: t("heicConvert.loading"),
-          success: t("heicConvert.success"),
-          error: t("heicConvert.error"),
+          loading: "heic 이미지를 jpg 포맷으로 변환중이에요",
+          success: "heic 이미지가 jpg 포맷으로 변환되었어요 🙌",
+          error: "heic 이미지를 jpg 포맷으로 변환하는데 실패했어요 😢",
         });
       } else {
         const blob = new Blob([file], { type: file.type });
@@ -107,9 +105,9 @@ export default function InputFileField(props: InputFieldProps) {
                 <div className="flex flex-col gap-4 justify-center items-center w-full h-full">
                   <UploadCloudIcon size={48} className="text-foreground/80" />
                   <span className="text-sm text-center text-foreground/80">
-                    {t("labelLine1")}
+                    여기에 파일을 끌어다 놓거나
                     <br />
-                    {t("labelLine2")}
+                    클릭해서 파일을 선택해주세요
                   </span>
                 </div>
               )}
@@ -117,7 +115,7 @@ export default function InputFileField(props: InputFieldProps) {
                 <div className="absolute bottom-4 right-2 bottom">
                   <Button className="gap-2" size="sm" type="button">
                     <ImageIcon width={18} className="text-sm text-foreground" />
-                    <span className="text-sm text-foreground">{t("submitButtonLabel")}</span>
+                    <span className="text-sm text-foreground">업로드</span>
                   </Button>
                 </div>
               )}

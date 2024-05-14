@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import OnDevelopBadge from "../OnDevelopBadge";
 
 type RadioGroupFieldProps = {
   form: any;
@@ -25,10 +24,7 @@ export default function RadioGroupField(props: RadioGroupFieldProps) {
       name={props.name}
       render={({ field, fieldState }) => (
         <FormItem className={cn("space-y-3", props.className)}>
-          <FormLabel className={cn("pt-4", props.onDevelop && "flex items-center gap-2")}>
-            {props.label}
-            {props.onDevelop && <OnDevelopBadge />}
-          </FormLabel>
+          <FormLabel className={cn("pt-4", props.onDevelop && "flex items-center gap-2")}>{props.label}</FormLabel>
           <FormControl>
             <RadioGroup
               onValueChange={field.onChange}
